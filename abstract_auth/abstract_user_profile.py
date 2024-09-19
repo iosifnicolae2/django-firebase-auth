@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 
 
@@ -6,7 +7,7 @@ class AbstractAuthProfile(models.Model):
         abstract = True
 
     user = models.OneToOneField(
-        "auth.User", on_delete=models.CASCADE, related_name="auth_profile"
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="auth_profile"
     )
     display_name = models.CharField(max_length=255, blank=True, null=True)
     phone_number = models.CharField(max_length=255, blank=True, null=True)
